@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ejemplo2_guia9
+namespace Ejercicio2._1b
 {
     internal class Program
     {
@@ -33,13 +33,8 @@ namespace Ejemplo2_guia9
 
             double promedio;
 
-            int mayor =0;
-            int menor =0;
-
-            int mayorL =0;
-            string mayorN = null;
-            int menorL = 0;
-            string menorN = null;
+            int mayor = 0;
+            int menor = 0;
 
             #endregion
 
@@ -64,53 +59,44 @@ namespace Ejemplo2_guia9
             contadorL = 0;
 
 
-            while (alumnoL !=-1)
+            while (alumnoL != -1)
             {
 
                 libretas[contadorL] = alumnoL;
-                
+
 
                 Console.WriteLine("Ingresar el nombre del alumno");
                 alumnoN = (Console.ReadLine());
 
                 nombres[contadorL] = alumnoN;
-                
+
 
                 Console.WriteLine("Ingresar la nota del alumno");
                 alumnoNota = Convert.ToInt32(Console.ReadLine());
 
                 notas[contadorL] = alumnoNota;
                 acumuladorNotas += alumnoNota;
-                
+
 
 
                 #region Comparar nota mayor y menor
                 if (contadorL == 0)
                 {
-                    mayor = alumnoNota;
-                    menor = alumnoNota;
-                    mayorL = libretas[contadorL];
-                    mayorN = nombres[contadorL];
-                    menorL = libretas[contadorL];
-                    menorN = nombres[contadorL];
+                    mayor = contadorL;
+                    menor = contadorL;
                 }
                 else
                 {
                     if (mayor < alumnoNota)
                     {
-                        mayor = alumnoNota;
-
-                        mayorL = libretas[contadorL];
-                        mayorN = nombres[contadorL]; 
-
+                        mayor = contadorL;
 
                     }
 
                     if (menor > alumnoNota)
                     {
-                        menor = alumnoNota;
-                        menorL = libretas[contadorL];
-                        menorN = nombres[contadorL];
+                        menor = contadorL;
+                       
                     }
                 }
                 #endregion
@@ -121,12 +107,12 @@ namespace Ejemplo2_guia9
 
             }
 
-            if (contadorL !=0)
+            if (contadorL != 0)
             {
-                promedio = 1.0 *acumuladorNotas/contadorL;
+                promedio = 1.0 * acumuladorNotas / contadorL;
                 Console.WriteLine($"El promedio de las notas cargadas es {promedio:f2}");
-                Console.WriteLine($"El alumno con la mayor nota es {mayorN}, le corresponde la libreta {mayorL} y su nota es {mayor}");
-                Console.WriteLine($"El alumno con la menor nota es {menorN}, le corresponde la libreta {menorL} y su nota es {menor}");
+                Console.WriteLine($"El alumno con la mayor nota es {nombres[mayor]}, le corresponde la libreta {libretas[mayor]} y su nota es {notas[mayor]}");
+                Console.WriteLine($"El alumno con la menor nota es {nombres[menor]}, le corresponde la libreta {libretas[menor]} y su nota es {notas[menor]}");
 
                 for (int i = 0; i < contadorL; i++)
                 {
@@ -146,7 +132,7 @@ namespace Ejemplo2_guia9
                     }
                 }
                 Console.WriteLine($"Los alumnos que superan el promedio: \n");
-                for (int i = 0;i<contadorNuevo;i++)
+                for (int i = 0; i < contadorNuevo; i++)
                 {
                     Console.WriteLine($"\tNombre: {nombresNuevo[i],5} Libreta: {libretasNuevo[i],5} Nota: {notasNuevo[i],5}");
                 }
@@ -157,8 +143,6 @@ namespace Ejemplo2_guia9
             {
                 Console.WriteLine("No hay notas cargadas");
             }
-            
-            
         }
     }
 }
